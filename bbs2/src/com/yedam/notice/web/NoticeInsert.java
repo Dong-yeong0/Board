@@ -23,7 +23,7 @@ public class NoticeInsert implements DbCommand {
 		String path="";
 		
 		if(c>0) {
-			path="/noticeList.do";
+			path="/noticeListPaging.do";
 		}else {
 			path="/noticeForm.do";
 		}

@@ -27,7 +27,7 @@ public class NoticeUpdate implements DbCommand {
 		int r = service.updateNotice(vo);
 		String path="";
 		if(r!=0) {
-			path = "noticeList.do";
+			path = "noticeListPaging.do";
 			request.setAttribute("notice", vo);
 		}else {
 			path = "notice.do";
