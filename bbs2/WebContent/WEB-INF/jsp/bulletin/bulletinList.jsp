@@ -6,10 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
+<script>
+	// 게시글 id로 조회
+	function formSubmit(bulletinId){
+		frm.id.value = bulletinId;
+		frm.submit();
+	}
+</script>
 </head>
 <body>
 
-	<form id = "frm" action="notice.do" method="post">
+	<form id = "frm" action="bulletinSelete.do" method="post">
 		<input type="hidden" id="id" name="id">
 	</form>
 	<div align="center">

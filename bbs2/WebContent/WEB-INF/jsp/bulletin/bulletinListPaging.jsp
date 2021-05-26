@@ -5,24 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeListPaging.jsp</title>
+<title>bulletinListPaging.jsp</title>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script>
+	function goPage(page){
+		location.href = "bulletinListPaging.do?page=" + page;
+	}
 	function formSubmit(id){
       frm.id.value = id;
       frm.submit();
 	}
-	function goPage(page){
-		location.href = "noticeListPaging.do?page=" + page;
-	}
 </script>
+
 </head>
 <body>
 
-	<form id="frm" action="notice.do" method="post">
+	<form id="frm" action="bulletinSelete.do" method="post">
 		<input type="hidden" id="id" name="id">
 	</form>
 	<div align="center">
-		<h3>공지사항(Paging) 리스트</h3>
+		<h3>게시물(Paging) 리스트</h3>
 		<div style="width: 80%">
 			<table class="table" border="1">
 				<tr>
@@ -31,23 +34,23 @@
 					<th width="150">작성일자</th>
 					<th width="100">조회수</th>
 				</tr>
-				<c:forEach items="${noticeList }" var="vo">
+				<c:forEach items="${bulletinList }" var="vo">
 					<tr onclick="formSubmit(${vo.id })">
 						<td>${vo.id }</td>
 						<td>${vo.title }</td>
 						<td>${vo.regDate }</td>
-						<td>${vo.hit }</td>
+						<td>${vo.hit } <i class="glyphicon glyphicon-thumbs-up"></i> <i class="glyphicon glyphicon-thumbs-up"></i></td>
 					</tr>
 				</c:forEach>
 			</table>
 			<div>
 				<button type="button" onclick="location.href='main.do'">첫
 					페이지</button>
-				<c:if test="${id eq 'admin' }">
-					<button type="button" onclick="location.href='noticeForm.do'">등록</button>
+				<c:if test="${!empty id}">
+					<button type="button" onclick="location.href='bulletinForm.do'">등록</button>
 				</c:if>
 			</div>
-			
+
 			<!-- 페이징 호출 -->
 			<jsp:include page="../common/paging.jsp" flush="true">
 				<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
