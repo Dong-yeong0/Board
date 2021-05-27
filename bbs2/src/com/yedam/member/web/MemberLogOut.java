@@ -12,7 +12,7 @@ public class MemberLogOut implements DbCommand {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "main/main.tiles";
+		return "common/section.tiles";
 	}
 
 }
